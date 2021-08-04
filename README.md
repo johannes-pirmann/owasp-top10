@@ -17,6 +17,3 @@ python3 db.py
 
 ## Run the application
 run flask
-
-# DEMO
-## XSS
