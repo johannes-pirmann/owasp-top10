@@ -1,7 +1,9 @@
 # Setup
 ## Create an environment
-git clone xyz
+git clone git@github.com:johannes-pirmann/owasp-top10.git
+
 cd owasp_top10
+
 python3 -m venv venv
 
 ## Activate the environment
