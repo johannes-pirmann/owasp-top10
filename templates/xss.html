@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XSS | OWWASP Top 10</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/">Overview</a></li>
+        </ul>
+    </header>
+    <h1>XSS</h1>
+    <h2>Description</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, nostrum. Quasi dicta placeat, facere nihil at voluptatibus, veritatis repudiandae eum perferendis nulla pariatur dolorem voluptatum ipsam iste ullam totam atque!</p>
+    <h2>Unsecure Implementation</h2>
+    <p>What is your name?</p>
+    <form action="/xssUnsecure" method="POST">
+        <input type="text" name="nameUnsecure" id="searchForNameUnsecure">
+        <input type="submit" value="submit">
+    </form>
+    <p>Possible Input:</br>
+        Hello &lt;script>alert('Injected!');&lt;/script>
+    </p>
+    <h2>Secure Implementation</h2>
+    <p>What is your name?</p>
+    <form action="/xssSecure" method="POST">
+        <input type="text" name="nameSecure" id="searchForNameSecure">
+        <input type="submit" value="submit">
+    </form>
+    <p>This time the input was escaped through the flask.escape() method.</p>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Injection | OWWASP Top 10</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/">Overview</a></li>
+        </ul>
+    </header>
+
+
+    <h1>SQL Injection</h1>
+    <form action="/reset_db" method="post">
+        <input type="submit" value="Reset Database">
+    </form>
+    {% if reset_message %}
+        <h3>{{reset_message}}</h3>
+    {% endif %}
+    <h2>Description</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, nostrum. Quasi dicta placeat, facere nihil at voluptatibus, veritatis repudiandae eum perferendis nulla pariatur dolorem voluptatum ipsam iste ullam totam atque!</p>
+    <h2>List all available users</h2>
+    <form action="/listAllUsers" method="get">
+        <input type="submit" value="List all users.">
+    </form>
+    <h2>List of Users:</h2>
+    {% if users %}
+    {% block content %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody >
+                {% for dict_item in users %}
+                <tr>
+                    <th>{{ dict_item }}</th>
+                    <th>{{ users[dict_item] }}</th>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+            
+    {% endblock %}
+
+    {% endif %}
+
+
+    <h2>Unsecure Implementation</h2>
+    <p>Add your name to the database!</p>
+    <form action="/addUserToDBUnsecure" method="POST">
+        <input type="text" name="addNameUnsecure" id="addNameUnsecure">
+        <input type="submit" value="submit">
+    </form>
+    <p>Possible Input:</br>
+        John Doe');DROP TABLE IF EXISTS users;
+    </p>
+
+
+
+    <h2>Secure Implementation</h2>
+    <p>Add your name to the database!</p>
+    <form action="/addUserToDBSecure" method="POST">
+        <input type="text" name="addNameSecure" id="addNameSecure">
+        <input type="submit" value="submit">
+    </form>
+    <p>Explanation</p>
+</body>
+</html>
